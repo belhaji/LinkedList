@@ -10,10 +10,11 @@
 
 
 
+
 Node* node_new(void* value){
     Node* n= (Node*) malloc(sizeof(Node));
     if (n == NULL) {
-        perror("memory allocation error");
+        fprintf(stderr,"memory allocation error\n");
         exit(EXIT_FAILURE);
     }
     n->_value = value;

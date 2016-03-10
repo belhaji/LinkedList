@@ -9,21 +9,17 @@
 #ifndef LinkedList_h
 #define LinkedList_h
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "App.h"
+
+#define E_OK                    0
+#define E_NOT_FOUND             1
+#define E_INDEX_OUT_OF_BOUND    2
+#define E_NULL_VALUE            3
 
 
-
-
-
-#define E_NOT_FOUND 1
-#define E_INDEX_OUT_OF_BOUND 2
-#define E_NULL_VALUE 3
-#define E_OK 0
-
-typedef struct __list{
+typedef struct __node{
     void* _value;
-    struct __list* next;
+    struct __node* next;
 } Node;
 
 typedef struct {

@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C522F6041C8F70B500CCB5DC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C522F6031C8F70B500CCB5DC /* main.c */; };
+		C5152F4F1C91B87D0066C211 /* Student.c in Sources */ = {isa = PBXBuildFile; fileRef = C5152F4D1C91B87D0066C211 /* Student.c */; };
+		C5152F571C91C00D0066C211 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5152F561C91C00D0066C211 /* libsqlite3.tbd */; };
+		C5152F5A1C91C4A20066C211 /* Mark.c in Sources */ = {isa = PBXBuildFile; fileRef = C5152F581C91C4A20066C211 /* Mark.c */; };
+		C522F6041C8F70B500CCB5DC /* App.c in Sources */ = {isa = PBXBuildFile; fileRef = C522F6031C8F70B500CCB5DC /* App.c */; };
 		C522F60C1C8F7B5C00CCB5DC /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = C522F60B1C8F7B5C00CCB5DC /* LinkedList.c */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +27,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C5152F4D1C91B87D0066C211 /* Student.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Student.c; sourceTree = "<group>"; };
+		C5152F4E1C91B87D0066C211 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		C5152F561C91C00D0066C211 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C5152F581C91C4A20066C211 /* Mark.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Mark.c; sourceTree = "<group>"; };
+		C5152F591C91C4A20066C211 /* Mark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mark.h; sourceTree = "<group>"; };
+		C5152F5B1C91E7EF0066C211 /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		C522F6001C8F70B500CCB5DC /* S2Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = S2Project; sourceTree = BUILT_PRODUCTS_DIR; };
-		C522F6031C8F70B500CCB5DC /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		C522F6031C8F70B500CCB5DC /* App.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = App.c; sourceTree = "<group>"; };
 		C522F60A1C8F710D00CCB5DC /* LinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
 		C522F60B1C8F7B5C00CCB5DC /* LinkedList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5152F571C91C00D0066C211 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +54,7 @@
 		C522F5F71C8F70B500CCB5DC = {
 			isa = PBXGroup;
 			children = (
+				C5152F561C91C00D0066C211 /* libsqlite3.tbd */,
 				C522F6021C8F70B500CCB5DC /* S2Project */,
 				C522F6011C8F70B500CCB5DC /* Products */,
 			);
@@ -60,9 +71,14 @@
 		C522F6021C8F70B500CCB5DC /* S2Project */ = {
 			isa = PBXGroup;
 			children = (
-				C522F6031C8F70B500CCB5DC /* main.c */,
+				C522F6031C8F70B500CCB5DC /* App.c */,
 				C522F60A1C8F710D00CCB5DC /* LinkedList.h */,
 				C522F60B1C8F7B5C00CCB5DC /* LinkedList.c */,
+				C5152F4D1C91B87D0066C211 /* Student.c */,
+				C5152F4E1C91B87D0066C211 /* Student.h */,
+				C5152F581C91C4A20066C211 /* Mark.c */,
+				C5152F591C91C4A20066C211 /* Mark.h */,
+				C5152F5B1C91E7EF0066C211 /* App.h */,
 			);
 			path = S2Project;
 			sourceTree = "<group>";
@@ -123,8 +139,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5152F5A1C91C4A20066C211 /* Mark.c in Sources */,
 				C522F60C1C8F7B5C00CCB5DC /* LinkedList.c in Sources */,
-				C522F6041C8F70B500CCB5DC /* main.c in Sources */,
+				C522F6041C8F70B500CCB5DC /* App.c in Sources */,
+				C5152F4F1C91B87D0066C211 /* Student.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +261,7 @@
 				C522F6091C8F70B500CCB5DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

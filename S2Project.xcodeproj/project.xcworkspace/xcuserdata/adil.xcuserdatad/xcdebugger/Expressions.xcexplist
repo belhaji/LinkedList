@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "main:main.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "(Complex *)list-&gt;firstNode-&gt;next-&gt;next-&gt;next-&gt;next-&gt;next-&gt;next-&gt;_value">
+            </PersistentString>
+            <PersistentString
+               value = "(Complex *)list-&gt;firstNode-&gt;_value">
+            </PersistentString>
+            <PersistentString
+               value = "(Complex *)list-&gt;firstNode-&gt;next-&gt;_value">
+            </PersistentString>
+            <PersistentString
+               value = "(Complex*)list-&gt;firstNode-&gt;_value">
+            </PersistentString>
+            <PersistentString
+               value = "(Complex *)list-&gt;firstNode-&gt;next-&gt;next-&gt;next-&gt;next-&gt;next-&gt;_value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "list_insert:LinkedList.c">
+      </ContextState>
+      <ContextState
+         contextName = "list_get:LinkedList.c">
+      </ContextState>
+      <ContextState
+         contextName = "list_delete:LinkedList.c">
+      </ContextState>
+      <ContextState
+         contextName = "list_clean:LinkedList.c">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
