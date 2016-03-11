@@ -45,6 +45,11 @@ LinkedList* list_new(){
 
 void list_free(LinkedList* l){
     if (l != NULL) {
+        if (l->size == 0) {
+            free(l);
+            return;
+        }
+        list_clean(l, &free);
         free(l);
     }
 }
@@ -91,7 +96,7 @@ int list_add(LinkedList* l, void* value){
     return list_insert(l, value, l->size);
 }
 
-int list_delete(LinkedList* l, int atIndex){
+int list_delete(LinkedList* l, int atIndex, void(*freeCallback)(void*) ){
     if (list_empty(l) || atIndex < 0 || atIndex > list_size(l)-1) {
         return E_INDEX_OUT_OF_BOUND;
     }
@@ -119,16 +124,16 @@ int list_delete(LinkedList* l, int atIndex){
     l->size--;
     if (nDel != NULL) {
         if (nDel->_value != NULL)
-            free(nDel->_value);
+            (*freeCallback)(nDel->_value);
         free(nDel);
     }
     return E_OK;
 }
 
-int list_clean(LinkedList* l){
+int list_clean(LinkedList* l, void(*freeCallback)(void*) ){
     int ret = E_NOT_FOUND;
     while (!list_empty(l)) {
-        ret = list_delete(l, 0);
+        ret = list_delete(l, 0,freeCallback);
     }
     return ret;
 }
@@ -146,7 +151,7 @@ void* list_get(LinkedList* l, int atIndex){
     
 }
 
-int list_replace(LinkedList* l, int atIndex, void* newElement){
+int list_replace(LinkedList* l, int atIndex, void* newElement, void(*freeCallback)(void*) ){
     if (list_empty(l) || atIndex < 0 || atIndex > list_size(l)-1) {
         return E_INDEX_OUT_OF_BOUND;
     }
@@ -175,7 +180,7 @@ int list_replace(LinkedList* l, int atIndex, void* newElement){
     }
     if (nDel != NULL) {
         if (nDel->_value != NULL)
-            free(nDel->_value);
+            (*freeCallback)(nDel->_value);
         free(nDel);
     }
     return E_OK;

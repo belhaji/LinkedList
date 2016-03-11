@@ -6,9 +6,8 @@
 //  Copyright © 2016 Adil. All rights reserved.
 //
 
+
 #include "Mark.h"
-
-
 
 
 Mark* mark_new(int id, double value, int examNumber, Student* student){
@@ -177,7 +176,7 @@ LinkedList* mark_find_all(sqlite3* db,MarksOrder order){
         marks = NULL;
     }else{
         marks = list_new();
-        while (sqlite3_step(stmt) == SQLITE_ROW) {
+        do {
             mark = mark_new(sqlite3_column_int(stmt, 0),
                             sqlite3_column_double(stmt, 1),
                             sqlite3_column_int(stmt, 2),
@@ -187,14 +186,53 @@ LinkedList* mark_find_all(sqlite3* db,MarksOrder order){
                                         (char*)sqlite3_column_text(stmt, 7),
                                         list_new() ) );
             list_add(marks, mark);
-        }
+        }while ( (rc=sqlite3_step(stmt)) == SQLITE_ROW);
     }
     sqlite3_finalize(stmt);
     return marks;
 }
 
 LinkedList* mark_find_by_student_id(sqlite3* db,int student_id,MarksOrder order){
-    return NULL;
+    int rc;
+    LinkedList* marks = NULL;
+    Mark *mark = NULL;
+    sqlite3_stmt *stmt = NULL;
+    char* sql = NULL;
+    switch (order) {
+        case VALUE:
+            sql = "SELECT * FROM marks m JOIN students s WHERE m.student_id = s.id AND m.student_id = ? ORDER BY value";
+            break;
+        case EXAM_NUMBER:
+            sql = "SELECT * FROM marks m JOIN students s WHERE m.student_id = s.id AND m.student_id = ? ORDER BY exam_number";
+            break;
+        default:
+            break;
+    }
+    rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+    if (rc) {
+        fprintf(stderr,"Error stmt %s\n",sqlite3_errmsg(db));
+        return 0;
+    }
+    sqlite3_bind_int(stmt, 1, student_id);
+    rc = sqlite3_step(stmt);
+    if (rc != SQLITE_ROW){
+        marks = NULL;
+    }else{
+        marks = list_new();
+        do {
+            mark = mark_new(sqlite3_column_int(stmt, 0),
+                            sqlite3_column_double(stmt, 1),
+                            sqlite3_column_int(stmt, 2),
+                            student_new(sqlite3_column_int(stmt, 3),
+                                        (char*)sqlite3_column_text(stmt, 5),
+                                        (char*)sqlite3_column_text(stmt, 6),
+                                        (char*)sqlite3_column_text(stmt, 7),
+                                        list_new() ) );
+            list_add(marks, mark);
+        }while ( (rc=sqlite3_step(stmt)) == SQLITE_ROW);
+    }
+    sqlite3_finalize(stmt);
+    return marks;
 }
 
 

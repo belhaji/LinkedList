@@ -16,6 +16,8 @@
 #define E_INDEX_OUT_OF_BOUND    2
 #define E_NULL_VALUE            3
 
+#define FREE_CALLBACK(func) ((void(*)(void*))func)
+
 
 typedef struct __node{
     void* _value;
@@ -45,13 +47,13 @@ int list_insert(LinkedList* l, void* value, int atIndex);
 
 int list_add(LinkedList* l, void* value);
 
-int list_delete(LinkedList* l, int atIndex);
+int list_delete(LinkedList* l, int atIndex,void(*freeCallback)(void*) );
 
-int list_clean(LinkedList* l);
+int list_clean(LinkedList* l, void(*freeCallback)(void*));
 
 void* list_get(LinkedList* l, int atIndex);
 
-int list_replace(LinkedList* l, int atIndex, void* newElement);
+int list_replace(LinkedList* l, int atIndex, void* newElement, void(*freeCallback)(void*) );
 
 
 

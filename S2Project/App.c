@@ -29,10 +29,6 @@ void print_marks_list(LinkedList* marks){
 
 int main(int argc, const char * argv[]) {
     sqlite3* db = NULL;
-    int ret;
-    //Student s;
-    //s.id = 6;
-    Mark *m = NULL;
     LinkedList* list = NULL;
     int rc = sqlite3_open("app.db", &db);
     if (rc) {
@@ -41,9 +37,11 @@ int main(int argc, const char * argv[]) {
         exit(EXIT_FAILURE);
     }
     //m = mark_find(db, 50);
-    list = mark_find_all(db, 0);
+    list = mark_find_by_student_id(db,1, EXAM_NUMBER);
     if (list) {
         print_marks_list(list);
+        list_clean(list, FREE_CALLBACK(&mark_free) );
+        list_free(list);
     }
     
     sqlite3_close(db);
